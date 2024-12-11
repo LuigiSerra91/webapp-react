@@ -5,7 +5,7 @@ export default function Footer() {
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
 
                     <div className="col">
-                        <h3>Bool Books</h3>
+                        <h3>Movies</h3>
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo cumque veniam exercitationem, dignissimos nihil inventore tenetur!
                         </p>
