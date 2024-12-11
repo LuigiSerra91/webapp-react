@@ -11,6 +11,8 @@ export default function MoviesPage() {
     fetch('http://localhost:3009/api/movies')
       .then(response => response.json())
       .then(data => {
+        console.log(data);
+
         setMovies(data.movies);  // Memorizza i film nello stato
       })
       .catch(error => {
