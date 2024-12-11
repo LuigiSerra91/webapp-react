@@ -1,5 +1,6 @@
 
 import Banner from "../components/Banner.jsx"
+import MovieCard from "../components/MovieCard.jsx";
 export default function MoviesPage() {
   const movies = [
     {
@@ -71,7 +72,13 @@ export default function MoviesPage() {
       <section className="py-5">
         <div className="container">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-
+            {
+              movies.map(movie => (
+                <div className="col" key={movie.id}>
+                  <MovieCard movie={movie} />
+                </div>
+              ))
+            }
           </div>
         </div>
       </section>
