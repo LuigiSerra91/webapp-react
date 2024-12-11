@@ -4,6 +4,7 @@ import ReviewCard from "../components/ReviewCard"
 
 
 export default function SingleMovie() {
+
     const { id } = useParams()
 
     const movieReviews = [
@@ -77,6 +78,8 @@ export default function SingleMovie() {
             review: "Mi aspettavo di più da un film così famoso, ma è comunque un buon intrattenimento.",
             vote: 3
         }
+
+
     ];
 
 

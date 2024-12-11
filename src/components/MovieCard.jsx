@@ -9,7 +9,7 @@ export default function MovieCard({ movie }) {
                 <p className="overview mb-3">
                     {movie.overview}
                 </p>
-                <Link to={`/movie/${movie.id}`} className="btn btn-primary">Read more</Link>
+                <Link to={`/movies/${movie.id}`} className="btn btn-primary">Read more</Link>
             </div>
         </div>
     );
