@@ -3,10 +3,10 @@ export default function Header() {
 
 
     return (
-        <header className='bg-light py-3 px-4 shadow'>
+        <header className='bg-secondary py-3 px-4 shadow'>
             <nav>
                 <NavLink to="/" className="text-decoration-none">
-                    <strong>Movies</strong>
+                    <strong className="text-white">Movies</strong>
                 </NavLink>
             </nav>
         </header>
