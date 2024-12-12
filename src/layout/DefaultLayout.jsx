@@ -5,7 +5,7 @@ export default function DefaultLayout() {
     return (
         <>
             <Header />
-            <main>
+            <main className="bg-secondary">
                 <Outlet />
             </main>
             <Footer />
