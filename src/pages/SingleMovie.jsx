@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function SingleMovie() {
     const { id } = useParams()
     const [movie, setMovie] = useState(null)
-    const [movieTitle, setMovieTitle] = useState([])
+
 
     useEffect(() => {
         fetch(`http://localhost:3009/api/movies/${id}`)
@@ -16,7 +16,7 @@ export default function SingleMovie() {
                 console.log(data);
 
                 setMovie(data);  // Memorizza i film nello stato
-                setMovieTitle(data.title)
+
             })
             .catch(error => {
                 console.error('There was an error with the fetch operation:', error);
@@ -30,7 +30,7 @@ export default function SingleMovie() {
         <>
 
 
-            <Banner title={movie?.title} subtitle="By Author name" leadtext="lorem ipsum dolor" />
+            <Banner title={movie?.title} subTitle={movie?.director} leadtext={movie?.abstract} />
 
             <section className="reviews">
                 <div className="container">

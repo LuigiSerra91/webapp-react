@@ -13,6 +13,7 @@ export default function MovieCard({ movie }) {
                 <p className="overview mb-3">
                     {movie.abstract}
                 </p>
+                <p className="text-success"><strong>{movie.release_year}</strong></p>
                 <Link to={`/movies/${movie.id}`} className="btn btn-primary">Read more</Link>
             </div>
         </div>

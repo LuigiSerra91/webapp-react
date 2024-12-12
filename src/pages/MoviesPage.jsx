@@ -22,7 +22,7 @@ export default function MoviesPage() {
 
   return (
     <>
-      <Banner title={'Movies'} subTitle={'The nerdest book community'} leadtext={'lorem lorem loremo lorem lorem lorem lorem lorem lorem'} />
+      <Banner title={'Movies'} subTitle={'The nerdest movies community'} leadtext={'lorem lorem loremo lorem lorem lorem lorem lorem lorem'} />
 
       <section className="py-5">
         <div className="container">
