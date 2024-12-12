@@ -1,7 +1,7 @@
 import AvarageStars from '../components/AvarageStars.jsx'
 export default function ReviewCard({ review, movie }) {
     return (
-        <div className="review card mb-3">
+        <div className="review card m-3">
             <div className="card-body">
 
                 <span> By : {review.name}</span>

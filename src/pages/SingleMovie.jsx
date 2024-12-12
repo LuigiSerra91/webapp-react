@@ -32,7 +32,7 @@ export default function SingleMovie() {
 
             <Banner title={movie?.title} subTitle={movie?.director} leadtext={movie?.abstract} />
 
-            <section className="reviews">
+            <section className="reviews pb-5">
                 <div className="container">
                     {/* All reviews here */}
 
