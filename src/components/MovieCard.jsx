@@ -5,7 +5,7 @@ export default function MovieCard({ movie }) {
 
     return (
         <div className="movie card">
-            <div className="card-header ">
+            <div className="card-header">
                 <h4>{movie.title}</h4>
             </div>
             <div className="card-body bg-black text-white">
