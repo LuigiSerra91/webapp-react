@@ -1,8 +1,16 @@
 .card {
     box-shadow: 10px 10px 10px rgb(243, 240, 240);
     width: 300px;
+
 }
 
 .review-card {
     font-weight: bold;
+}
+
+
+
+.card:hover {
+    scale: 1.07;
+    transition: 0.4s
 }
