@@ -9,6 +9,7 @@ export default function MovieCard({ movie }) {
                 <h4>{movie.title}</h4>
             </div>
             <div className="card-body">
+                <img className="img-card" src={movie.image} alt="" style={{ width: '150px' }} />
                 <span className="text-muted">By <span>{movie.director}</span></span>
                 <p className="overview mb-3">
                     {movie.abstract}
