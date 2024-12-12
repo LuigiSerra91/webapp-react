@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function SingleMovie() {
     const { id } = useParams()
-    const [reviews, setReviews] = useState([])
+    const [movie, setMovie] = useState(null)
     const [movieTitle, setMovieTitle] = useState([])
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function SingleMovie() {
             .then(data => {
                 console.log(data);
 
-                setReviews(data.reviews);  // Memorizza i film nello stato
+                setMovie(data);  // Memorizza i film nello stato
                 setMovieTitle(data.title)
             })
             .catch(error => {
@@ -36,7 +36,7 @@ export default function SingleMovie() {
                 <div className="container">
                     {/* All reviews here */}
 
-                    {reviews.map((review) => <ReviewCard key={review.id} review={review} />)}
+                    {movie && movie.reviews.map((review) => <ReviewCard key={review.id} review={review} />)}
 
 
                 </div>
