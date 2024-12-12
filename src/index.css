@@ -1,6 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .card {
     box-shadow: 10px 10px 10px rgb(243, 240, 240);
     width: 300px;
+    height: 100%;
 
 }
 
@@ -8,9 +15,11 @@
     font-weight: bold;
 }
 
-
-
 .card:hover {
-    scale: 1.07;
-    transition: 0.4s
+    transform: scale(1.07);
+    transition: 0.4s;
+}
+
+main {
+    min-height: 600px;
 }

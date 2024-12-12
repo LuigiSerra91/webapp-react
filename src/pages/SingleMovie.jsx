@@ -35,8 +35,11 @@ export default function SingleMovie() {
             <section className="reviews pb-5">
                 <div className="container">
                     {/* All reviews here */}
+                    <h3>reviews :</h3>
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+                        {movie && movie.reviews.map((review) => <ReviewCard key={review.id} review={review} />)}
+                    </div>
 
-                    {movie && movie.reviews.map((review) => <ReviewCard key={review.id} review={review} />)}
 
 
                 </div>
