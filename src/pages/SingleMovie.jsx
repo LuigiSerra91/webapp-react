@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 
 
 export default function SingleMovie() {
+
+
     const { id } = useParams()
+    const movie_api_url = `http://localhost:3009/api/movies/${id}`
     const [movie, setMovie] = useState(null)
 
 
     useEffect(() => {
-        fetch(`http://localhost:3009/api/movies/${id}`)
+        fetch(movie_api_url)
             .then(response => response.json())
             .then(data => {
                 console.log(data);

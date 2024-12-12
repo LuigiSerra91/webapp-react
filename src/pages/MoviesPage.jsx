@@ -3,12 +3,14 @@ import Banner from "../components/Banner.jsx";
 import MovieCard from "../components/MovieCard.jsx";
 
 export default function MoviesPage() {
+
+  const movies_api_url = 'http://localhost:3009/api/movies'
   // Stato per memorizzare i film
   const [movies, setMovies] = useState([]);
 
   // Effettuare il fetch dei dati quando il componente viene montato
   useEffect(() => {
-    fetch('http://localhost:3009/api/movies')
+    fetch(movies_api_url)
       .then(response => response.json())
       .then(data => {
         console.log(data);
