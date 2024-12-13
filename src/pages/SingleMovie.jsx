@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import Banner from "../components/Banner"
 import ReviewCard from "../components/ReviewCard"
 import { useEffect, useState } from "react";
+import FormReview from "../components/FormReview";
 
 
 export default function SingleMovie() {
@@ -34,7 +35,7 @@ export default function SingleMovie() {
 
 
             <Banner title={movie?.title} subTitle={movie?.director} leadtext={movie?.abstract} />
-
+            <FormReview />
             <section className="reviews pb-5">
                 <div className="container">
                     {/* All reviews here */}
