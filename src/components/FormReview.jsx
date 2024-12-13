@@ -1,129 +1,122 @@
 import { useState } from "react";
 
-export default function FormReview({ movie_id }) {
-    console.log(movie_id);
-
-    const [name, setName] = useState('')
-    const [text, setText] = useState('')
-    const [vote, setVote] = useState(0)
-    const [errorMessage, setErrorMessage] = useState(null)
-    const [success, setSuccess] = useState(null)
-
+export default function FormReview({ movie_id, addReview }) {
+    const [name, setName] = useState('');
+    const [text, setText] = useState('');
+    const [vote, setVote] = useState(0);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [success, setSuccess] = useState(null);
 
     function HandleFormToggle() {
-        document.getElementById('form-card').classList.toggle('d-none')
+        document.getElementById('form-card').classList.toggle('d-none');
     }
 
-
-
     function HandleFormSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
 
-
-
-
-        if (name.length < 2 || vote == 0 || text.length < 5) {
-            setErrorMessage('Please fill all fileds in the form')
-
+        if (name.length < 2 || vote === 0 || text.length < 5) {
+            setErrorMessage('Please fill all fields in the form');
         } else {
-            setErrorMessage(null)
+            setErrorMessage(null);
 
             const formData = {
                 name,
                 vote,
-                text
-            }
+                text,
+            };
 
-
-
-
-
-            const base_movie_api_url = `http://localhost:3009/api/movies/${movie_id}/review`
+            const base_movie_api_url = `http://localhost:3009/api/movies/${movie_id}/review`;
 
             fetch(base_movie_api_url, {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(res => res.json())
-                .then(data => {
-                    console.log(data);
-
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
                     if (data.success) {
-                        setSuccess('Thanks for your review')
+                        setSuccess('Thanks for your review');
 
+                        // Aggiungi la recensione appena inviata alla lista delle recensioni
+                        addReview({ ...formData, id: data.id }); // Aggiungi la recensione appena inviata
 
-                        setTimeout(HandleFormToggle, 1000)
-
-
-                        setTimeout(() => setSuccess(null), 3000)
-
-
+                        setTimeout(HandleFormToggle, 1000);
+                        setTimeout(() => setSuccess(null), 3000);
                     }
-
-                }).finally(() => {
-                    console.log(success);
-
                 })
-                .catch(err => console.log(err))
-
+                .catch((err) => console.log(err));
         }
 
-
-        setName('')
-        setVote(0)
-        setText('')
-
-
+        setName('');
+        setVote(0);
+        setText('');
     }
 
-
-
     return (
-
         <div className="container">
-
             {success && <div>{success}</div>}
-            <button onClick={HandleFormToggle} className="btn btn-dark mb-2" >Write a review</button>
-
+            <button onClick={HandleFormToggle} className="btn btn-dark mb-2">
+                Write a review
+            </button>
 
             <div id="form-card" className="card mb-4 d-none">
                 <div className="card-body">
-
                     <h3>Leave your review</h3>
 
                     <form onSubmit={HandleFormSubmit}>
-
-
                         <div className="mb-3">
                             <label htmlFor="username">User name</label>
-                            <input name="name" id="name" type="text" className="form-control" placeholder="mario" value={name} onChange={(e) => setName(e.target.value)} required />
+                            <input
+                                name="name"
+                                id="name"
+                                type="text"
+                                className="form-control"
+                                placeholder="Luigi"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
                         </div>
-
 
                         <div className="rating mb-3 text-warning">
-                            {[1, 2, 3, 4, 5].map(n => <i key={n} className={`bi bi-star${n <= vote ? '-fill' : ''} `} onClick={() => setVote(n)}></i>)}
+                            {[1, 2, 3, 4, 5].map((n) => (
+                                <i
+                                    key={n}
+                                    className={`bi bi-star${n <= vote ? '-fill' : ''}`}
+                                    onClick={() => setVote(n)}
+                                ></i>
+                            ))}
                         </div>
-
 
                         <div className="mb-3">
                             <label htmlFor="review">Your review</label>
-                            <textarea className="form-control" name="review" id="review" placeholder="leave your review here " value={text} onChange={(e) => setText(e.target.value)} required></textarea>
+                            <textarea
+                                className="form-control"
+                                name="review"
+                                id="review"
+                                placeholder="leave your review here"
+                                value={text}
+                                onChange={(e) => setText(e.target.value)}
+                                required
+                            ></textarea>
                         </div>
 
                         <div className="mb-3">
-                            <button type="submit" className="btn btn-primary">Send</button>
-                            {errorMessage && <span className="text-danger"> <i className="bi bi-x"></i> {errorMessage}</span>}
+                            <button type="submit" className="btn btn-primary">
+                                Send
+                            </button>
+                            {errorMessage && (
+                                <span className="text-danger">
+                                    {" "}
+                                    <i className="bi bi-x"></i> {errorMessage}
+                                </span>
+                            )}
                         </div>
-
                     </form>
-
-
-
                 </div>
             </div>
         </div>
-    )
-
+    );
 }
