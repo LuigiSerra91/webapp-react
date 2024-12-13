@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function FormReview({ movie_id }) {
+    console.log(movie_id);
 
     const [name, setName] = useState('')
     const [text, setText] = useState('')
@@ -36,7 +37,7 @@ export default function FormReview({ movie_id }) {
 
 
 
-            // make an ajax request to the book id enpoing
+
             const base_movie_api_url = `http://localhost:3009/api/movies/${movie_id}/review`
 
             fetch(base_movie_api_url, {
@@ -71,8 +72,9 @@ export default function FormReview({ movie_id }) {
 
 
         setName('')
-        setText('')
         setVote(0)
+        setText('')
+
 
     }
 
@@ -93,18 +95,18 @@ export default function FormReview({ movie_id }) {
 
                     <form onSubmit={HandleFormSubmit}>
 
-                        {/* input username */}
+
                         <div className="mb-3">
                             <label htmlFor="username">User name</label>
                             <input name="name" id="name" type="text" className="form-control" placeholder="mario" value={name} onChange={(e) => setName(e.target.value)} required />
                         </div>
 
-                        {/* rating stars */}
+
                         <div className="rating mb-3 text-warning">
                             {[1, 2, 3, 4, 5].map(n => <i key={n} className={`bi bi-star${n <= vote ? '-fill' : ''} `} onClick={() => setVote(n)}></i>)}
                         </div>
 
-                        {/* textarea review */}
+
                         <div className="mb-3">
                             <label htmlFor="review">Your review</label>
                             <textarea className="form-control" name="review" id="review" placeholder="leave your review here " value={text} onChange={(e) => setText(e.target.value)} required></textarea>
